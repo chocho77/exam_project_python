@@ -1,14 +1,14 @@
-def print_user_options():
-    options =(
-        "Add vehicle to inventory",
-        "Delete vehicle from inventory",
-        "View current inventory",
-        "Update vehicle",
-        "Export current inventory",
-        "Quit"
-    )
+from vehicle_management import MAIN_MENU_OPTIONS
 
-    for i, option in enumerate(options, start=1):
+
+def print_user_options():
+   
+    for i, option in enumerate(MAIN_MENU_OPTIONS, start=1):
         print(f"#{i} {option}")
-    
-    
+
+
+def take_user_input() -> int:
+    user_input = int(input("Please choose from one of the above options\n"))
+    return user_input
+
+
