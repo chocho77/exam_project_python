@@ -7,8 +7,8 @@ def print_user_options():
         print(f"#{i} {option}")
 
 
-def take_user_input() -> int:
-    user_input = int(input("Please choose from one of the above options\n"))
+def take_user_input() -> str:
+    user_input = input("Please choose from one of the above options\n")
     return user_input
 
 
