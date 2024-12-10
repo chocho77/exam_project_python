@@ -26,11 +26,14 @@ def delete_vehicle_from_db(id: int):
 def view_vehicle_from_db(id: int) -> Tuple:
     return db[id]
 
+
 def update_vehicle_from_db(id: int,
                            make: str,
                            model: str,
                            year: int,
                            color: str,
                            range: float):
-    pass
+    db[id] = (make, model, year, color, range)
+
+
 
