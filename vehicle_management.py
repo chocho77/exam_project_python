@@ -19,14 +19,24 @@ def map_user_input(user_input:int):
         add_vehicle_to_db(*vehicle_data)
         print("Vehicle added successfully.")
     elif user_input == 2:
-        _id = take_user_delete_vehicle_input()
-        #validate
-        delete_vehicle_from_db(int(_id) - 1)
-        print("Vehicle deleted successfully.")
+        try:
+            _id = take_user_delete_vehicle_input()
+            #validate
+            delete_vehicle_from_db(int(_id) - 1)
+            print("Vehicle deleted successfully.")
+        except ValueError:
+            print("Wrong id")
     elif user_input == 3:
         print_inventory()
     elif user_input == 4:
-        update_vehicle_from_db(*take_user_update_vehicle_input())
+        try:
+            update_vehicle_from_db(*take_user_update_vehicle_input())
+            print("Vehicle updated successfully")
+        except ValueError:
+            print("Wrong id")
+    elif user_input == 5:
+        
+        pass
 
     elif user_input == 6:
         exit(0)
@@ -42,8 +52,8 @@ def take_user_add_vehicle_input() -> Tuple[str, str, str, str, str]:
 
     return make, model, year, color, range
 
-def take_user_delete_vehicle_input():
-    return input("Enter id\n")
+def take_user_delete_vehicle_input() -> int:
+    return int(input("Enter id\n")) - 1
 
 def print_inventory():
     print("Car details:")
@@ -51,7 +61,7 @@ def print_inventory():
         print(f"#{i} {car_data[0]} {car_data[1]} {car_data[2]} {car_data[3]} {car_data[4]}")
     print()
 
-def take_user_update_vehicle_input() -> Tuple[str,str,str,str,str,str]:
+def take_user_update_vehicle_input() -> Tuple[int,str,str,str,str,str]:
     _id = take_user_delete_vehicle_input()
     vehicle_data = take_user_add_vehicle_input()
     return (+_id,) + vehicle_data

@@ -1,4 +1,5 @@
 from typing import List, Tuple
+import csv
 
 db = []
 
@@ -34,6 +35,12 @@ def update_vehicle_from_db(id: int,
                            color: str,
                            range: float):
     db[id] = (make, model, year, color, range)
+
+def export_data(filepath:str):
+    with open(filepath, 'w', newline='') as csvfile:
+        spamwriter = csv.writer(csvfile)
+        for row in get_database():
+            spamwriter.writerow(row)
 
 
 
