@@ -1,6 +1,6 @@
 from sys import exit
 from typing import Tuple
-from database import add_vehicle_to_db,get_database,delete_vehicle_from_db,update_vehicle_from_db
+from database import add_vehicle_to_db,get_database,delete_vehicle_from_db,update_vehicle_from_db,export_data
 
 
 MAIN_MENU_OPTIONS =(
@@ -35,9 +35,8 @@ def map_user_input(user_input:int):
         except ValueError:
             print("Wrong id")
     elif user_input == 5:
-        
-        pass
-
+        export_data("data.csv")
+        print("Data exported successfully.")
     elif user_input == 6:
         exit(0)
     else:
